@@ -11,7 +11,7 @@ resource "aws_security_group" "instance_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["186.114.47.119/32"]
+    cidr_blocks = ["186.114.47.117/32"]
   }
 
   # Allow outbound traffic to all destinations
