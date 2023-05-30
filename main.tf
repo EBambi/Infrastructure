@@ -1,14 +1,15 @@
 provider "aws" {
-    region = "us-east-2"
+    region = var.region
 }
 
-resource "aws_instance" "Ubuntu20" {
-    ami           = "ami-0430580de6244e02e"
-    instance_type = "t2.micro"
+resource "aws_instance" "agent_one" {
+    ami             = var.instance_AMI
+    instance_type   = var.instance_type
+    key_name        = var.key_name_workers
 
     tags = {
-        Name    = "Ubuntu server"
-        Owner   = "Esteban"
-        Project = "Final Project DevOps"
+        Name    = "agent-one"
+        Owner   = var.owner
+        Project = var.project
     }
 }
