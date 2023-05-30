@@ -3,8 +3,8 @@ pipeline {
     stages{
         stage('Checkout') {
             steps {
-                sshagent(credentials: ['Infrastructure-Crdentials']) {
-                    git url: 'https://github.com/EBambi/Infrastructure.git', branch: 'main', credentialsId: 'Infrastructure-Crdentials'
+                sshagent(credentials: ['Infrastructure-Credentials']) {
+                    git url: 'https://github.com/EBambi/Infrastructure.git', branch: 'main', credentialsId: 'Infrastructure-Credentials'
                 } 
             }
         }
