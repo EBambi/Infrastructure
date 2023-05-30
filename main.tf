@@ -8,7 +8,7 @@ resource "aws_instance" "agent_one" {
     key_name        = var.key_name_workers
 
     tags = {
-        Name    = "agent-one-test"
+        Name    = "agent-one"
         Owner   = var.owner
         Project = var.project
     }
@@ -20,7 +20,7 @@ resource "aws_instance" "deployer" {
     key_name        = var.key_name_workers
 
     tags = {
-        Name    = "deployer-test"
+        Name    = "deployer"
         Owner   = var.owner
         Project = var.project
     }
