@@ -5,7 +5,7 @@ variable "region" {
 
 variable "instance_AMI"{
     type        = string
-    default     = "ami-0430580de6244e02e"
+    default     = "ami-0855243e8dfcaf4d2"
     description = "AMI of Ubuntu-srvr-20.04 LTS"
 }
 
