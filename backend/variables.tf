@@ -9,3 +9,9 @@ variable "table_name" {
   type        = string
   default     = "terraform-lock"
 }
+
+variable "region" {
+    description = "The name of the region where we're working."
+    type        = string
+    default     = "us-east-2"
+}
