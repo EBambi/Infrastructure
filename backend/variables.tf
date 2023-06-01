@@ -1,7 +1,7 @@
 variable "bucket_name" {
   description = "The name of the S3 bucket. Must be globally unique."
   type        = string
-  default     = "trfm-ste-bkt-Final"
+  default     = "trfm-ste-bkt-final"
 }
 
 variable "table_name" {
