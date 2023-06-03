@@ -22,6 +22,7 @@ pipeline {
             }
         }
         stage('TF Apply Backend') {
+            when { expression { return env.Action == 'apply' } }
             steps {
                 input(message: 'Click "proceed" to approve the above Terraform Plan')
                 sh 'cd backend/'(
