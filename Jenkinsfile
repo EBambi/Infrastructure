@@ -10,9 +10,9 @@ pipeline {
         }
         stage('Init Backend') {
             steps {
-                //sh 'cd backend/'
                 sh 'pwd'
-                sh 'ls'
+                sh 'cd backend/'
+                sh 'pwd'
                 sh 'terraform init'
             }
         }
