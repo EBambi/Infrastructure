@@ -10,7 +10,9 @@ pipeline {
         }
         stage('Init Backend') {
             steps {
-                sh 'cd backend/ && terraform init'
+                dir ('backend'){
+                    sh 'terraform init'
+                }
             }
         }
         stage('TF Plan Backend') {
