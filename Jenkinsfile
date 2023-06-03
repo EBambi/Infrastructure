@@ -24,8 +24,7 @@ pipeline {
         stage('TF Apply Backend') {
             steps {
                 input(message: 'Click "proceed" to approve the above Terraform Plan')
-                sh (
-                    'cd backend/',
+                sh 'cd backend/'(
                     label: 'Terraform Apply',
                     script: 'terraform apply --auto-approve'
                 )
