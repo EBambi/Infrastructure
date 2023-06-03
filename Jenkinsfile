@@ -13,10 +13,10 @@ pipeline {
                 sh 'cd backend/ && terraform init'
             }
         }
-/*         stage('TF Plan Backend') {
+        stage('TF Plan Backend') {
             steps {
                 sh (
-                    'cd backend/',
+                    sh 'cd backend/',
                     label: 'Terraform Plan',
                     script: "terraform plan -out tfplan"
                 )
@@ -32,5 +32,5 @@ pipeline {
                 )
             }
         }
- */    }
+    }
 }
