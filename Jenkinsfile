@@ -20,6 +20,10 @@ pipeline {
                     label: 'Terraform Plan',
                     script: "terraform plan -out tfplan"
                 )
+            }
+        }
+        stage('TF Apply Backend') {
+            steps {
                 input(message: 'Click "proceed" to approve the above Terraform Plan')
                 sh (
                     label: 'Terraform Apply'
