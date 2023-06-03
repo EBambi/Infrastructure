@@ -12,12 +12,8 @@ pipeline {
             steps {
                 dir ('backend'){
                     sh 'terraform init'
+                    sh 'terraform plan -out tfplan -no-color'
                 }
-            }
-        }
-        stage('TF Plan Backend') {
-            steps {
-                sh 'cd backend/ && terraform plan -out tfplan'
             }
         }
         stage("Get Approval") {
@@ -27,10 +23,9 @@ pipeline {
         }
         stage('TF Apply Backend') {
             steps {
-                sh 'cd backend/'(
-                    label: 'Terraform Apply',
-                    script: 'terraform apply --auto-approve'
-                )
+                dir ('backend'){
+                    sh 'terraform apply -auto-approval'
+                }
             }
         }
     }
