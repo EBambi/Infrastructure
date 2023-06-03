@@ -10,10 +10,10 @@ pipeline {
         }
         stage('Init Backend') {
             steps {
-                sh 'cd /var/lib/jenkins/workspace/Infrastructure/backend/ | terraform init'
+                //sh 'cd backend/'
                 sh 'pwd'
                 sh 'ls'
-                //sh 'terraform init'
+                sh 'terraform init'
             }
         }
         stage('TF Plan Backend') {
