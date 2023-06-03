@@ -23,7 +23,7 @@ pipeline {
                 input(message: 'Click "proceed" to approve the above Terraform Plan')
                 sh (
                     label: 'Terraform Apply'
-                    script: 'terraform apply -auto-approve'
+                    script: 'terraform apply --auto-approve'
                 )
             }
         }
