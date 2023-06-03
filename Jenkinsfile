@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Init Backend') {
             steps {
-                sh 'cd backend/'
+                sh 'cd /home/ubuntu/backend/'
                 sh 'terraform init'
             }
         }
