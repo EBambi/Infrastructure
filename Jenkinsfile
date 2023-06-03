@@ -16,7 +16,7 @@ pipeline {
         stage('TF Plan Backend') {
             steps {
                 sh (
-                    'cd backend/'
+                    'cd backend/',
                     label: 'Terraform Plan',
                     script: "terraform plan -out tfplan"
                 )
@@ -26,7 +26,7 @@ pipeline {
             steps {
                 input(message: 'Click "proceed" to approve the above Terraform Plan')
                 sh (
-                    'cd backend/'
+                    'cd backend/',
                     label: 'Terraform Apply',
                     script: 'terraform apply --auto-approve'
                 )
