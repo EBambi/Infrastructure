@@ -8,14 +8,23 @@ pipeline {
                 } 
             }
         }
-        stage('Terraform init') {
+        stage('Init Backend') {
             steps {
+                sh 'cd backend/'
                 sh 'terraform init'
             }
         }
-        stage('Terraform apply') {
+        stage('TF Plan Backend') {
             steps {
-                sh 'terraform apply -auto-approve'
+                sh (
+                    label: 'Terraform Plan',
+                    script: "terraform plan -out tfplan"
+                )
+                input(message: 'Click "proceed" to approve the above Terraform Plan')
+                sh (
+                    label: 'Terraform Apply'
+                    script: 'terraform apply -auto-approve'
+                )
             }
         }
     }
