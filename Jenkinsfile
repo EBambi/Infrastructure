@@ -21,10 +21,13 @@ pipeline {
                 )
             }
         }
-        stage('TF Apply Backend') {
-            when { expression { return env.Action == 'apply' } }
+        stage("Get Approval") {
             steps {
-                input(message: 'Click "proceed" to approve the above Terraform Plan')
+                input "Please Approve the Terraform Plan"
+            }
+        }
+        stage('TF Apply Backend') {
+            steps {
                 sh 'cd backend/'(
                     label: 'Terraform Apply',
                     script: 'terraform apply --auto-approve'
