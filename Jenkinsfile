@@ -11,6 +11,7 @@ pipeline {
         stage('Init Backend') {
             steps {
                 sh 'cd /var/lib/jenkins/workspace/Infrastructure/backend'
+                sh 'pwd'
                 sh 'terraform init'
             }
         }
