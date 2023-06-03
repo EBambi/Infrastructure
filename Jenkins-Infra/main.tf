@@ -1,7 +1,3 @@
-provider "aws" {
-    region = var.region
-}
-
 resource "aws_instance" "agent_one" {
     ami             = var.instance_AMI
     instance_type   = var.instance_type
