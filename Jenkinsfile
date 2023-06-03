@@ -12,6 +12,7 @@ pipeline {
             steps {
                 sh 'cd /var/lib/jenkins/workspace/Infrastructure/backend/'
                 sh 'pwd'
+                sh 'ls'
                 sh 'terraform init'
             }
         }
