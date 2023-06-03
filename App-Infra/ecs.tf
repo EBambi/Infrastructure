@@ -1,10 +1,10 @@
 #ECS Task definition
 resource "aws_ecs_task_definition" "hello_world" {
   family                   = "hello-world-app"
-  network_mode             = "awsvpc"
-  requires_compatibilities = ["FARGATE"]
   cpu                      = 1024
   memory                   = 2048
+  requires_compatibilities = ["FARGATE"]
+  network_mode             = "awsvpc"
 
   container_definitions = <<DEFINITION
 [
@@ -34,6 +34,7 @@ resource "aws_security_group" "hello_world_task" {
     protocol        = "tcp"
     from_port       = 3000
     to_port         = 3000
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
@@ -54,4 +55,10 @@ resource "aws_ecs_service" "hello_world" {
   task_definition = aws_ecs_task_definition.hello_world.arn
   desired_count   = 1
   launch_type     = "FARGATE"
+
+  network_configuration {
+    security_groups   = [aws_security_group.hello_world_task.id]
+    subnets           = ["subnet-02c7900bcf6f3af6d"]
+    assign_public_ip  = true
+  }
 }
