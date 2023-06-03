@@ -24,7 +24,7 @@ pipeline {
         stage('TF Apply Backend') {
             steps {
                 dir ('backend'){
-                    sh 'terraform apply -auto-approval'
+                    sh 'terraform apply -auto-approve'
                 }
             }
         }
