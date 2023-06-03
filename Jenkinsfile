@@ -15,10 +15,7 @@ pipeline {
         }
         stage('TF Plan Backend') {
             steps {
-                sh 'cd backend/'(
-                    label: 'Terraform Plan',
-                    script: "terraform plan -out tfplan"
-                )
+                sh 'cd backend/ && terraform plan -out tfplan'
             }
         }
         stage("Get Approval") {
