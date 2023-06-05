@@ -1,5 +1,5 @@
 #ECS Task definition
-resource "aws_ecs_task_definition" "sorter" {
+resource "aws_ecs_task_definition" "sorter_app" {
   family                   = "sorter-app"
   cpu                      = 1024
   memory                   = 2048
@@ -51,7 +51,7 @@ resource "aws_ecs_cluster" "main" {
 }
 
 #ECS Service with created task
-resource "aws_ecs_service" "sorter" {
+resource "aws_ecs_service" "sorter_service" {
   name            = "sorter-service"
   cluster         = aws_ecs_cluster.main.id
   task_definition = aws_ecs_task_definition.sorter-service.arn
