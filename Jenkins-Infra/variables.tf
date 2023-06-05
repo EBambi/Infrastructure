@@ -5,8 +5,8 @@ variable "region" {
 
 variable "instance_AMI"{
     type        = string
-    default     = "ami-0855243e8dfcaf4d2"
-    description = "AMI of Ubuntu-srvr-20.04 LTS"
+    default     = "ami-0047fa9cbdd32dd8f"
+    description = "AMI of J-T-A which contains Jenkins, Terraform and AWS CLI"
 }
 
 variable "instance_type"{
