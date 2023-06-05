@@ -45,10 +45,12 @@ resource "aws_security_group" "hello_world_task" {
   }
 }
 
+#ECS Cluster
 resource "aws_ecs_cluster" "main" {
   name = "example-cluster"
 }
 
+#ECS Service with created task
 resource "aws_ecs_service" "hello_world" {
   name            = "hello-world-service"
   cluster         = aws_ecs_cluster.main.id
