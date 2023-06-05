@@ -54,12 +54,12 @@ resource "aws_ecs_cluster" "main" {
 resource "aws_ecs_service" "sorter" {
   name            = "sorter-service"
   cluster         = aws_ecs_cluster.main.id
-  task_definition = aws_ecs_task_definition.hello_world.arn
+  task_definition = aws_ecs_task_definition.sorter-service.arn
   desired_count   = 1
   launch_type     = "FARGATE"
 
   network_configuration {
-    security_groups   = [aws_security_group.hello_world_task.id]
+    security_groups   = [aws_security_group.sorter-service_task.id]
     subnets           = ["subnet-02c7900bcf6f3af6d"]
     assign_public_ip  = true
   }
