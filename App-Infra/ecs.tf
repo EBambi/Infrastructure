@@ -1,6 +1,6 @@
 #ECS Task definition
-resource "aws_ecs_task_definition" "hello_world" {
-  family                   = "hello-world-app"
+resource "aws_ecs_task_definition" "sorter" {
+  family                   = "sorter-app"
   cpu                      = 1024
   memory                   = 2048
   requires_compatibilities = ["FARGATE"]
@@ -12,7 +12,7 @@ resource "aws_ecs_task_definition" "hello_world" {
     "image": "registry.gitlab.com/architect-io/artifacts/nodejs-hello-world:latest",
     "cpu": 1024,
     "memory": 2048,
-    "name": "hello-world-app",
+    "name": "sorter-app",
     "networkMode": "awsvpc",
     "portMappings": [
       {
@@ -26,8 +26,8 @@ DEFINITION
 }
 
 #Security group for ECS service
-resource "aws_security_group" "hello_world_task" {
-  name        = "example-task-security-group"
+resource "aws_security_group" "sorter_task" {
+  name        = "sorter-task-security-group"
   vpc_id      = "vpc-0864d6bf4075c3cd9"
 
   ingress {
@@ -47,12 +47,12 @@ resource "aws_security_group" "hello_world_task" {
 
 #ECS Cluster
 resource "aws_ecs_cluster" "main" {
-  name = "example-cluster"
+  name = "web-app-cluster"
 }
 
 #ECS Service with created task
-resource "aws_ecs_service" "hello_world" {
-  name            = "hello-world-service"
+resource "aws_ecs_service" "sorter" {
+  name            = "sorter-service"
   cluster         = aws_ecs_cluster.main.id
   task_definition = aws_ecs_task_definition.hello_world.arn
   desired_count   = 1
