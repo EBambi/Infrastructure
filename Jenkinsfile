@@ -10,6 +10,7 @@ pipeline {
         }
         stage('Init/Plan Backend') {
             steps {
+                cleanWs()
                 dir ('backend'){
                     sh 'terraform init'
                     sh 'terraform plan -out tfplan -no-color'
@@ -66,6 +67,11 @@ pipeline {
                 dir ('App-Infra'){
                     sh 'terraform apply -auto-approve'
                 }
+            }
+        }
+        post { 
+            always { 
+                cleanWs()
             }
         }
     }
