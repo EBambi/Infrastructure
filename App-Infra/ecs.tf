@@ -59,7 +59,7 @@ resource "aws_ecs_service" "sorter_service" {
   launch_type     = "FARGATE"
 
   network_configuration {
-    security_groups   = [aws_security_group.sorter_service_task.id]
+    security_groups   = [aws_security_group.sorter_task.id]
     subnets           = ["subnet-02c7900bcf6f3af6d"]
     assign_public_ip  = true
   }
