@@ -3,6 +3,7 @@ pipeline {
     stages{
         stage('Checkout') {
             steps {
+                cleanWs()
                 sshagent(credentials: ['Infrastructure-Credentials']) {
                     git url: 'https://github.com/EBambi/Infrastructure.git', branch: 'main', credentialsId: 'Infrastructure-Credentials'
                 } 
@@ -10,7 +11,6 @@ pipeline {
         }
         stage('Init/Plan Backend') {
             steps {
-                cleanWs()
                 dir ('backend'){
                     sh 'terraform init'
                     sh 'terraform plan -out tfplan -no-color'
