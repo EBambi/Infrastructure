@@ -54,7 +54,7 @@ resource "aws_ecs_cluster" "main" {
 resource "aws_ecs_service" "sorter_service" {
   name            = "sorter-service"
   cluster         = aws_ecs_cluster.main.id
-  task_definition = aws_ecs_task_definition.sorter_service.arn
+  task_definition = aws_ecs_task_definition.sorter_app.arn
   desired_count   = 1
   launch_type     = "FARGATE"
 
